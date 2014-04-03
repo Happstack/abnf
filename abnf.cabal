@@ -1,0 +1,30 @@
+name:                abnf
+version:             0.1.0.0
+synopsis:            ABNF Parser and Printer
+homepage:            http://www.happstack.com/
+license:             BSD3
+license-file:        LICENSE
+author:              Jeremy Shaw
+maintainer:          jeremy@n-heptane.com
+category:            Text
+build-type:          Simple
+cabal-version:       >=1.8
+
+library
+  exposed-modules:     ABNF.Speak
+                       ABNF.Types
+                       ABNF.Arbitrary
+                       ABNF.Parser
+                       ABNF.Printer
+                       ABNF.Verbatim
+                       ABNF.CoreRules
+  build-depends:       base             == 4.6.*,
+                       mtl              == 2.1.*,
+                       text             >= 0.11 && < 1.2,
+                       containers       == 0.5.*,
+                       template-haskell == 2.8.*,
+                       th-lift          == 0.6.*,
+                       parsec           == 3.1.*,
+                       operational      == 0.2.*,
+                       pretty           == 1.1.*,
+                       QuickCheck       == 2.6.*
