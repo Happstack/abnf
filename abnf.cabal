@@ -1,6 +1,11 @@
 name:                abnf
 version:             0.1.0.0
-synopsis:            ABNF Parser and Printer
+synopsis:            RFC5234 ABNF (Augmented Backus–Naur Form) Grammar Parser and Printer
+description:         This library is used to parse and pretty print
+                     grammar definitions which are specified using
+                     ABNF. Note that we are only parsing the
+                     specification of the grammar, not the grammar
+                     that is being defined.
 homepage:            http://www.happstack.com/
 license:             BSD3
 license-file:        LICENSE
@@ -10,21 +15,25 @@ category:            Text
 build-type:          Simple
 cabal-version:       >=1.8
 
+source-repository head
+        type:          git
+        location:      https://github.com/Happstack/abnf.git
+
 library
-  exposed-modules:     ABNF.Speak
-                       ABNF.Types
-                       ABNF.Arbitrary
+  exposed-modules:     ABNF.CoreRules
+                       ABNF.Gen
                        ABNF.Parser
                        ABNF.Printer
-                       ABNF.Verbatim
-                       ABNF.CoreRules
-  build-depends:       base             == 4.6.*,
-                       mtl              == 2.1.*,
+                       ABNF.RFC5234
+                       ABNF.Types
+
+  build-depends:       base             >= 4.6  && < 4.8,
+                       mtl              >= 2.1  && < 2.3,
                        text             >= 0.11 && < 1.2,
                        containers       == 0.5.*,
-                       template-haskell == 2.8.*,
+                       string-qq        >= 0.0  && < 0.1,
+                       template-haskell >= 2.8  && < 2.10,
                        th-lift          == 0.6.*,
                        parsec           == 3.1.*,
-                       operational      == 0.2.*,
                        pretty           == 1.1.*,
-                       QuickCheck       == 2.6.*
+                       QuickCheck       >= 2.6  && < 2.8

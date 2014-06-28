@@ -1,3 +1,5 @@
+{- | Render an ABNF Grammar
+-}
 module ABNF.Printer where
 
 import ABNF.Types
@@ -5,11 +7,12 @@ import Data.List (intersperse)
 import Data.Text (unpack)
 import Text.PrettyPrint.HughesPJ
 
-
+-- | render a list of 'Rule'
 ppRuleList :: RuleList -> Doc
 ppRuleList (RuleList rules) =
     vcat $ map ppRule rules
 
+-- | render a single 'Rule'
 ppRule :: Rule -> Doc
 ppRule (Rule rn elements) =
     ppRuleName rn <+> equals <+> ppElements elements
