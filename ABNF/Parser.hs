@@ -276,7 +276,7 @@ abnf = QuasiQuoter
 -- | QuasiQuote for a single ABNF 'Rule'
 abnfRule :: QuasiQuoter
 abnfRule = QuasiQuoter
-    { quoteExp = \str -> [| parseRule "rule" str |]
+    { quoteExp = \str -> [| parseRule "rule" (str :: String) |]
     , quoteType = error "abnf does not implement quoteType"
     , quotePat  = error "abnf does not implement quotePat"
     , quoteDec  = error "abnf does not implement quoteDec"
