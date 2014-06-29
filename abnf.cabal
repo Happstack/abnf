@@ -28,12 +28,25 @@ library
                        ABNF.Types
 
   build-depends:       base             >= 4.6  && < 4.8,
-                       mtl              >= 2.1  && < 2.3,
                        text             >= 0.11 && < 1.2,
                        containers       == 0.5.*,
-                       string-qq        >= 0.0  && < 0.1,
-                       template-haskell >= 2.8  && < 2.10,
-                       th-lift          == 0.6.*,
+                       mtl              >= 2.1  && < 2.3,
                        parsec           == 3.1.*,
                        pretty           == 1.1.*,
-                       QuickCheck       >= 2.6  && < 2.8
+                       QuickCheck       >= 2.6  && < 2.8,
+                       string-qq        >= 0.0  && < 0.1,
+                       template-haskell >= 2.8  && < 2.10,
+                       th-lift          == 0.6.*
+
+test-suite test-abnf
+  main-is:             tests/Test.hs
+  type:                exitcode-stdio-1.0
+  build-depends:       base             >= 4.6  && < 4.8,
+                       containers       == 0.5.*,
+                       mtl              >= 2.1  && < 2.3,
+                       parsec           == 3.1.*,
+                       pretty           == 1.1.*,
+                       string-qq        >= 0.0  && < 0.1,
+                       text             >= 0.11 && < 1.2,
+                       template-haskell >= 2.8  && < 2.10,
+                       th-lift          == 0.6.*
