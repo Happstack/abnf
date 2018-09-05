@@ -1,5 +1,5 @@
 name:                abnf
-version:             0.1.0.1
+version:             0.1.0.2
 synopsis:            RFC5234 ABNF (Augmented Backus–Naur Form) Grammar Parser and Printer
 description:         This library is used to parse and pretty print
                      grammar definitions which are specified using
@@ -27,26 +27,26 @@ library
                        ABNF.RFC5234
                        ABNF.Types
 
-  build-depends:       base             >= 4.6  && < 4.8,
+  build-depends:       base             >= 4.6  && < 4.12,
                        text             >= 0.11 && < 1.3,
-                       containers       == 0.5.*,
+                       containers       >= 0.5  && < 0.7,
                        mtl              >= 2.1  && < 2.3,
                        parsec           == 3.1.*,
                        pretty           == 1.1.*,
-                       QuickCheck       >= 2.6  && < 2.8,
+                       QuickCheck       >= 2.6  && < 2.13,
                        string-qq        >= 0.0  && < 0.1,
-                       template-haskell >= 2.8  && < 2.10,
+                       template-haskell >= 2.8  && < 2.14,
                        th-lift          >= 0.6  && < 0.8
 
 test-suite test-abnf
   main-is:             tests/Test.hs
   type:                exitcode-stdio-1.0
-  build-depends:       base             >= 4.6  && < 4.8,
-                       containers       == 0.5.*,
+  build-depends:       base             >= 4.6  && < 4.12,
+                       containers       >= 0.5  && < 0.7,
                        mtl              >= 2.1  && < 2.3,
                        parsec           == 3.1.*,
                        pretty           == 1.1.*,
                        string-qq        >= 0.0  && < 0.1,
                        text             >= 0.11 && < 1.3,
-                       template-haskell >= 2.8  && < 2.10,
+                       template-haskell >= 2.8  && < 2.14,
                        th-lift          >= 0.6  && < 0.8

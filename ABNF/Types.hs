@@ -1,4 +1,4 @@
-{-# LANGUAGE DeriveDataTypeable, DeriveGeneric, GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE DeriveDataTypeable, DeriveGeneric, GeneralizedNewtypeDeriving, DataKinds #-}
 {- |A set of types for represeting ABNF grammars.
 
 These types do not capture comments or layout information. Additionally, many of the types permit values that are more general than the specification allows. For example:
@@ -35,17 +35,18 @@ module ABNF.Types
     , ruleMap
     ) where
 
-import Data.Data    (Data, Typeable)
-import Data.Monoid  (Monoid)
-import Data.Text    (Text, unpack, toCaseFold)
-import Data.String  (fromString)
-import Data.Map     (Map, fromList)
-import GHC.Generics (Generic)
+import Data.Data      (Data, Typeable)
+import Data.Monoid    (Monoid)
+import Data.Semigroup (Semigroup)
+import Data.Text      (Text, unpack, toCaseFold)
+import Data.String    (fromString)
+import Data.Map       (Map, fromList)
+import GHC.Generics   (Generic)
 
 -- | @rulelist       =  1*( rule / (*c-wsp c-nl) )@
 newtype RuleList
     = RuleList { rules :: [Rule] }
-      deriving (Eq, Ord, Read, Show, Data, Typeable, Generic, Monoid)
+      deriving (Eq, Ord, Read, Show, Data, Typeable, Generic, Semigroup, Monoid)
 
 -- |NOTE: 'RuleName's are case insensitive. The 'Eq' and 'Ord' instances obey this.
 --
@@ -76,12 +77,12 @@ type Elements = Alternation
 -- | @alternation    =  concatenation *(*c-wsp "\/" *c-wsp concatenation)@
 newtype Alternation
     = Alternation { concatenations :: [Concatenation] }
-      deriving (Eq, Ord, Read, Show, Data, Typeable, Generic, Monoid)
+      deriving (Eq, Ord, Read, Show, Data, Typeable, Generic, Semigroup, Monoid)
 
 -- | @concatenation  =  repetition *(1*c-wsp repetition)@
 newtype Concatenation
     = Concatenation { repetitions :: [Repetition] }
-      deriving (Eq, Ord, Read, Show, Data, Typeable, Generic, Monoid)
+      deriving (Eq, Ord, Read, Show, Data, Typeable, Generic, Semigroup, Monoid)
 
 
 -- | @element =  rulename \/ group \/ option \/ char-val \/ num-val \/ prose-val@

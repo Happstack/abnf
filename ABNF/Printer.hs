@@ -6,6 +6,7 @@ import ABNF.Types
 import Data.List (intersperse)
 import Data.Text (unpack)
 import Text.PrettyPrint.HughesPJ
+import Prelude hiding ((<>))
 
 -- | render a list of 'Rule'
 ppRuleList :: RuleList -> Doc
