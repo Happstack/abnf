@@ -1,5 +1,5 @@
 name:                abnf
-version:             0.1.0.2
+version:             0.1.0.3
 synopsis:            RFC5234 ABNF (Augmented Backus–Naur Form) Grammar Parser and Printer
 description:         This library is used to parse and pretty print
                      grammar definitions which are specified using
